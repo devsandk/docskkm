@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("jquery", "1.4.3");
+    google.setOnLoadCallback(function() {
+        // js from menu 
+
+        $('.li_first').click(function(){
+           // $('.ul_hide').hide();
+
+            if($(this).next('ul').css('display')=='none'){
+                $('.ul_hide').stop().slideUp('slow');
+                $(this).next('ul').slideDown('slow');
+
+            }
+            else{
+                $('.ul_hide').stop().slideUp('slow');
+            }
+
+        })
+        //insetr js code 
+        //History API
+        $('body').children('div:gt(0)').addClass('hide_social');
+        $('#control').click(function() {
+            var uri=$(this).attr('href');
+            openPage(uri);
+            return false;
+        })
+        // обработчик назад/вперед
+
+
+
+        var height=$(document).height();
+                    $('#logo').css({'margin-left':($(document).width()-$('#logo').width()-208)/2})
+        // resize div id  content 
+        var resize=false;
+        $('#butt_res').click(function() {
+         if(resize==false){
+                
+                $('.fullscreen').detach();
+                 $(this).css({ 
+                    'background-image':'url(images/resize_min.png)'
+                    });
+                 $('#content').css({
+                     boxShadow:'1px 1px 10px black',
+                    'position':'absolute', 'z-index':'100'
+                    
+                    
+                    })
+                    .stop().animate({
+
+                    width:$(document).width()-20,
+                    left:-1*parseInt($('#wrap').css('marginLeft'))+10,
+                    top:$('#header').position().top*(-1)-60
+                })
+                $('body').prepend('<div/>');
+                $('div:first').addClass('fullscreen');
+                $('.fullscreen').css({
+                        boxShadow:'1px 1px 3px black',
+                        'border-bottom':'1px solid black',
+                        'position':'absolute',
+                        'top':'0px',
+                        'background-color':'#FAF1DC',
+                        'width':'100%',
+                        'z-index':'100',
+                        'background-image':'url(images/logoBack.png)'
+                    })
+                    .stop().animate({
+                       // 'height':$('#footer').position().top+8
+                       'height':screen.availHeight
+                    }, '50000');
+                resize=true;
+            }
+            else{
+                $('.fullscreen').slideUp('slow');
+
+               $(this).css({  
+                    'background-image':'url(images/resize.png)'
+                    })
+               $('#content').stop().animate({
+                    width:'98%',
+                    left:'0px',
+                    top:'0px'
+                })
+                
+               .css({
+
+                    'position':'relative',
+                    boxShadow:'none'
+                })
+
+
+                resize=false;
+            }
+
+        })
+        //end resize content div 
+
+        $('#slogan').mouseover(function() {
+            $('#bhide').parent().stop().animate({opacity:'1'},'slow');
+        });
+
+        $('.hide_social').mouseover(function(){
+            if($('#bhide').css('opacity')==1){
+                $('#bhide').parent().stop().animate({opacity:'0'},'fast');
+            }
+        });
+        $('#bhide').click(function(){
+           $('#slogan').slideUp('slow');
+           $('#footer').css({'min-height':screen.availHeight-$(window).height()+$('#footer').height()+20});
+           $('#slogan').wrap("<div></div>").parent()
+                .append(
+                    $('<div/>')
+                    .css({
+                        boxShadow:'0px 1px 8px #5d5d5d',
+                        'z-index':'20',
+                        'background-color':'#faf1dc',
+                        'position':'relative'
+                        })
+                        .append(
+                            $('<div/>')
+                            )
+                            .append(
+                                $('<p/>')
+                                .text('Плюсануть')
+                                .css({
+                                    'color':'black',
+                                    'margin-top':'-1px',
+                                    'position':'relative',
+                                    'text-align':'center',
+                                    'width':'100%',
+                                    'cursor':'pointer',
+                                    textShadow:'2px 1px 0px white'
+                                })
+                            )
+                    .stop().animate({
+                        height:'20px'
+                    }, 1500)
+                    .click(function(){
+                       $(this).slideUp('slow');
+                       $('#slogan').slideDown('slow');
+                       $('#bhide').css({'opacity':'1'});
+                       $('#footer').stop().animate({minHeight:'150px'},1000);
+                    })
+                )
+        });
+    });
+    </script>
+    <link rel="shortcut icon" href="../favicon.ico"> 
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<script src="js/modernizr.custom.js"></script>
+    </head>
+    <body>
+        <div id='slogan'>
+            <div id="logo"></div>
+            <script type="text/javascript">(function() {
+                      if (window.pluso)if (typeof window.pluso.start == "function") return;
+                                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                                          s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                                                    s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                                                              var h=d[g]('head')[0] || d[g]('body')[0];
+                                                                        h.appendChild(s);
+                                                                                  })();</script>
+                                                                                          <div class="pluso" data-options="big,round,multiline,horizontal,nocounter,theme=01" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print" data-background="transparent"></div>
+
+
+        <div style='width:100%;opacity:0;float:left;'>
+            <div id='bhide' style='text-align:center;width:30%; position:relative; margin:auto;'>
+                <p style='border-radius:8px;text-shadow:1px 1px 1px white;padding:0; margin:0; background:#96a1b0; border-top:1px solid black;color:black;cursor:pointer;'>Скрыть</p>
+            </div>
+        </div>
+        
+        </div>
+        <div id="header">
+            <span id="logot"><!--<h1>DocsKKM</h1>--><img src='images/logo.png' /></span>
+        </div>
+        <div id='menu'>
+        </div>
+        <div id="wrap">
+            <div id="content">
+                <div id='resize'>
+                    <div id='butt_res'></div>
+                </div>
+                <div id="promo"><img src="images/google.png"/></div>
+                <div id='text'></div>
+            </div>
+        </div>
+        <div id="column">
+            <ul class='ulfirst_menu'> 
+                <li class='li_first'>Документы для ИП</li>
+                    <ul class='ul_hide'>
+                        <li>Заявление в налоговую</li>
+                        <li>Заявление на замену ЭКЛЗ</li>
+                    </ul>
+
+                <li class='li_first'>Документы для ООО</li>
+                    <ul class="ul_hide">
+                        <li>Заявление в налоговую</li>
+                    </ul>
+
+            </ul>
+        </div>
+        <div id="footer"></div>
+    </body>
+</html>
