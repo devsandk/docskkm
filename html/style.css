@@ -43,11 +43,11 @@
 #header {
     height:60px;
     z-index:10;
-    background: -moz-linear-gradient(top, #e2e2e2 0%,  #d1d1d1 51%, #d0d0d0 100%);
+   /* background: -moz-linear-gradient(top, #9f9f9f 0%,  #0f0f0f 21%, #0d0d0d 100%);*/
     border-bottom:1px solid #9d9d9d;
  /* background: -moz-linear-gradient(top, #2f76a5 0%, #2c74a3 8%, #2c72a0 13%, #266795 34%, #24638E 45%, #25628E 46%, #23618D 48%, #22618C 49%, #1f5e86 54%, #225c87 56%, #1d5d85 57%,#1D5880 64%, #1D5980 65%, #1A567E 67%, #1A547B 70%, #1C557C 71%, #19537A 72%, #19537A 74%, #1C537A 75%, #195279 76%, #174E74 88%, #144C71 91%, #174C71 92%, #144A6E 100% );*/
-    background:#dd4811;
     position:relative;
+    background-color:#0d0d0d;
 }
 body {
     margin:0px;
