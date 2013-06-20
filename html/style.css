@@ -185,10 +185,8 @@ ul.ul_hide li {
     text-shadow:1px -1px 1px #D9D9D9;
 }
 #content #text table {
-    border:4px solid #fff;
     box-shadow:0 1px 2px #9d9d9d;
     min-width:100%;
-    padding:10px;
     
 }
 #content #text table tr {
@@ -198,7 +196,18 @@ ul.ul_hide li {
 #content #text table tr td {
     height:100%;
 }
-#text table tr td .td {
-    border:4px solid #9d9d9d;
+#text table tr td .td, #text table tr td .tde{
+    border:4px solid #d9d9d9;
+    padding:10px;
+    min-width:45%;
+    background-color:#fff;
     min-height:100px;
+    color:black;
+}
+#text table tr td .tde {
+    border:none;
+    background:none;
+}
+.td input {
+    border:1px solid #9d9d9d;
 }
