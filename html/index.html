@@ -7,6 +7,32 @@
     <script type="text/javascript">
     google.load("jquery", "1.4.3");
     google.setOnLoadCallback(function() {
+        //this code full screen img class img_s
+        $(".img_sm").click(function(e){
+            if($('.wrap_img').length==0){
+                $('html').append(
+                                $('<div/>')
+                                .addClass('wrap_img')
+                                .css({
+                                    'position':'absolute',
+                                    'margin':'auto',
+                                    'width':'650px',
+                                    'height':'300px',
+                                    'background':'#ffffff',
+                                    'border':'4px solid #9f9f9f',
+                                    'zIndex':'10000',
+                                    'overflow':'visible',
+                                    'opacity':'0',
+                                    'marginLeft':($('html').width()-650)/2,
+                                    'marginTop':e.pageY-$(this).offset().top
+                                })
+                                )
+            }
+            $('.wrap_img').css({'display':'block','opacity':'0'})
+            $('.wrap_img').stop().animate({'opacity':'1', 'height':'300px'},1000).click(function(){
+                $(this).stop().animate({'opacity':'0'},1000).stop().slideUp('slow')
+            })
+        })
         // js from menu 
 
         $('.li_first').click(function(){
@@ -191,7 +217,8 @@
                     <table>
                         <tr>
                             <td><div class='td'><label for="inp_text">ИНН организации:</label><br><input type="TEXT" id="inp_text" value="Что-то вписать"/></div></td>
-                            <td><div class='tde'><img src='images/inn.png'/><p>Текст подсказки</p></div></td>
+                            <td><div class='tde'><img class='img_sm' src='images/inn.png' style="height:100px;float:left;"/>
+                            <p style="float:left;">Текст подсказки</p></div></td>
                     </table>
                 </div>
             </div>
