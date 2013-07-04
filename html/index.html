@@ -16,12 +16,17 @@
                elem.children[0].firstChild.style.background='#fff';
             }
         }
-
+    var y='';
+    var x='';
     google.load("jquery", "1.4.3");
     google.setOnLoadCallback(function() {
-        
+        $('.img_sm').mousemove(function(pos){
+            document.y=pos.pageY-$('.img_sm').offset().top;         
+            }
+        )
         $('.text_tr').mouseover(function(){
             change_border(this, 1);
+
         })
         $('.text_tr').mouseout(function(){
             change_border(this);
@@ -43,7 +48,7 @@
                                     'overflow':'visible',
                                     'opacity':'0',
                                     'marginLeft':($('html').width()-650)/2,
-                                    'marginTop':this.pageY
+                                    'marginTop':document.y
                                   //  'marginTop':e.pageY-$(this).offset().top
                                 })
                                     .append(
@@ -63,7 +68,8 @@
             $('.wrap_img').css({'display':'block','opacity':'0'});
             $('.wrap_img').stop().animate({'opacity':'1', 'height':'300px'},1000)
             $(".wrap_img_close").click(function(){
-                $('.wrap_img').stop().animate({'opacity':'0'},1000).stop().slideUp('slow')
+                $('.wrap_img').stop().animate({'opacity':'0'},1000).stop().slideUp('slow');
+                $('.wrap_img').remove();
             })
         })
         // js from menu 
@@ -254,17 +260,17 @@
                             <p style="float:left;">Текст подсказки</p></div></td>
                         </tr>
                         <tr class='text_tr'>
-                            <td><div class='td'><label for="inp_text">ИНН организации:</label><br><input type="TEXT" id="inp_text" value="Что-то вписать"/></div></td>
+                            <td><div class='td'><label for="inp_text1">ИНН организации:</label><br><input type="TEXT" id="inp_text1" value="Что-то вписать"/></div></td>
                             <td><div class='tde'><img class='img_sm' src='images/inn.png' style="height:100px;float:left;"/>
                             <p style="float:left;">Текст подсказки</p></div></td>
                          </tr>
                         <tr class='text_tr'>
-                            <td><div class='td'><label for="inp_text">ИНН организации:</label><br><input type="TEXT" id="inp_text" value="Что-то вписать"/></div></td>
+                            <td><div class='td'><label for="inp_text2">ИНН организации:</label><br><input type="TEXT" id="inp_text2" value="Что-то вписать"/></div></td>
                             <td><div class='tde'><img class='img_sm' src='images/inn.png' style="height:100px;float:left;"/>
                             <p style="float:left;">Текст подсказки</p></div></td>
                          </tr>
                         <tr class='text_tr'>
-                            <td><div class='td'><label for="inp_text">ИНН организации:</label><br><input type="TEXT" id="inp_text" value="Что-то вписать"/></div></td>
+                            <td><div class='td'><label for="inp_text3">ИНН организации:</label><br><input type="TEXT" id="inp_text3" value="Что-то вписать"/></div></td>
                             <td><div class='tde'><img class='img_sm' src='images/inn.png' style="height:100px;float:left;"/>
                             <p style="float:left;">Текст подсказки</p></div></td>
                          </tr>
